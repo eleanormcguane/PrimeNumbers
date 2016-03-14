@@ -1,0 +1,94 @@
+/* Find the closest prime number to a given int x
+   1 Take in x
+   2 Find closest prime number BELOW x
+   3 Find closest prime number ABOVE x
+   4 Compare differences
+   5 Output closer number
+*/
+
+import java.util.*;
+public class NearestPrimeNumber
+{
+    public static void main (String args[])
+    {
+        Scanner scan = new Scanner(System.in);
+        int x = scan.nextInt();
+        
+        boolean prime = primeNumber(x);
+        if(prime == true)
+        {
+            System.out.println(x);
+        }
+        
+        else
+        {
+            int high = 0;
+            int low = 0;
+            int difhigh = 0;
+            int diflow = 0;
+            int counthigh = 0;
+            int countlow = 0;
+            
+            for(int i = x; i > 1 && countlow==0; i--)
+            {
+                if(primeNumber(i) == true)
+                {
+                    low = i;
+                    diflow = x - i;
+                    countlow++;
+                }
+            }
+            
+            for(int i = x; i < 1000000 && counthigh==0; i++)
+            {
+                if(primeNumber(i) == true)
+                {
+                    high = i;
+                    difhigh = i - x;
+                    counthigh++;
+                }
+            }
+            
+            if(diflow > difhigh)
+            {
+                System.out.print(high);
+            }
+            
+            else if(difhigh > diflow)
+            {
+                System.out.println(low);
+            }
+            
+            else if(difhigh == diflow)
+            {
+                System.out.println(low);
+            }
+        }
+    }
+    
+    public static boolean primeNumber(int y)
+    {
+        //Determine whether int y is prime or not
+        boolean prime = false;
+        int count = 0;
+        
+        for(int i = 2; i < y; i++)
+        {
+            if(y % i == 0)
+            {
+                count++;
+            }
+        }
+        
+        if(count==0)
+        {
+            prime = true;
+        }
+        else if(count!=0)
+        {
+            prime = false;
+        }
+        
+        return prime;
+    }
+}
