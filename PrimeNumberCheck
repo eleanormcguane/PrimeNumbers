@@ -1,0 +1,35 @@
+/* Determine if a given int x is a prime number
+   1 Take in x
+   2 Check if any number between 2 and x-1 is a factor of x
+   3 If not, print "TRUE"
+   4 If so, print "FALSE"
+*/
+
+import java.util.*;
+
+public class PrimeNumberCheck
+{
+    public static void main (String args[])
+    {
+        Scanner sc = new Scanner(System.in);
+        int x = sc.nextInt();
+        int count = 0;
+        
+        for(int i = 2; i < x; i++)
+        {
+            if(x % i == 0)
+            {
+                count++;
+            }
+        }
+        
+        if(count == 0)
+        {
+            System.out.println("TRUE");
+        }
+        else if(count != 0)
+        {
+            System.out.println("FALSE");
+        }
+    }
+}     
