@@ -7,7 +7,7 @@
 */
 
 import java.util.*;
-public class NearestPrimeNumber
+public class ClosestPrimeNumber
 {
     public static void main (String args[])
     {
